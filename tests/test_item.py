@@ -2,6 +2,8 @@
 import pytest
 
 from src.item import Item
+
+
 def test_class_item(test_example):
     assert test_example.name == "Смартфон"
     assert test_example.price == 10000
@@ -16,3 +18,9 @@ def test_example():
     item1 = Item("Смартфон", 10000, 20)
     Item.pay_rate = 0.8
     return item1
+
+
+def test_string_to_number():
+    assert Item.string_to_number('2') == 2
+    assert Item.string_to_number('2.0') == 2
+    assert Item.string_to_number('2.4') == 2
