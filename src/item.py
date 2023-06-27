@@ -1,5 +1,6 @@
 import csv
-
+import os
+from pathlib import Path
 
 class Item:
     """
@@ -33,7 +34,8 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        with open('src/items.csv', encoding='windows-1251') as csvfile:
+        path = Path('C:\Users\Vil\electronics-shop-project\src\items.csv').resolve()
+        with open(path, encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=" ")
             for item in reader:
                 cls.all.append(cls(item['name'], int(item['price']), int(item['quantity'])))
