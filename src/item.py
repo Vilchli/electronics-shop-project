@@ -34,7 +34,7 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
-        path = Path('C:\Users\Vil\electronics-shop-project\src\items.csv').resolve()
+        path = Path('../src/items.csv').resolve()
         with open(path, encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=" ")
             for item in reader:
