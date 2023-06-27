@@ -1,5 +1,4 @@
 import csv
-import os
 from pathlib import Path
 
 class Item:
@@ -38,7 +37,7 @@ class Item:
         with open(path, encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=" ")
             for item in reader:
-                cls.all.append(cls(item['name'], int(item['price']), int(item['quantity'])))
+                cls.all.append(cls((item['name']), int(item['price']), int(item['quantity'])))
 
     @staticmethod
     def string_to_number(item):
