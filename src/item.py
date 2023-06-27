@@ -47,7 +47,7 @@ class Item:
         """
         Рассчитывает общую стоимость конкретного товара в магазине.
 
-        Общая стоимость товара
+        Общая стоимость товара.
         """
         total_price = self.price * self.quantity
         return total_price
