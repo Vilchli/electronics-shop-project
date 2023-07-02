@@ -20,7 +20,19 @@ def test_example():
     return item1
 
 
+def test_repr_str(test_example):
+    assert repr(test_example) == "Item('Смартфон', 10000, 20)"
+    assert str(test_example) == 'Смартфон'
+
+
 def test_string_to_number():
     assert Item.string_to_number('2') == 2
     assert Item.string_to_number('2.0') == 2
     assert Item.string_to_number('2.4') == 2
+
+
+def test_name_setter(test_example):
+    test_example.name = "Телефон"
+    assert test_example.name == "Телефон"
+    test_example.name = "Новый Телефон"
+    assert test_example.name == "Новый Теле"
