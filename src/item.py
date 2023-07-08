@@ -1,6 +1,7 @@
 import csv
 from pathlib import Path
 
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -25,6 +26,15 @@ class Item:
 
     def __str__(self):
         return self.__name
+
+    def __add__(self, other):
+        """
+        Проверки, чтобы нельзя было сложить Phone или Item
+        с экземплярами не Phone или Item классов.
+        """
+        if isinstance(other, self.__class__):
+            return self.quantity + other.quantity
+        raise Exception
 
     @property
     def name(self):

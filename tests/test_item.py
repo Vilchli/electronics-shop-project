@@ -1,8 +1,10 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
+
 import pytest
 
 from src.item import Item
 
+from src.phone import Phone
 
 def test_class_item(test_example):
     assert test_example.name == "Смартфон"
@@ -36,3 +38,6 @@ def test_name_setter(test_example):
     assert test_example.name == "Телефон"
     test_example.name = "Новый Телефон"
     assert test_example.name == "Новый Теле"
+
+
+
