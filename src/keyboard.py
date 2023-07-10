@@ -16,7 +16,7 @@ class MixinLog:
             return self
         else:
             self.__language = 'EN'
-            return self
+        return self
 
 
 class Keyboard(Item, MixinLog):
