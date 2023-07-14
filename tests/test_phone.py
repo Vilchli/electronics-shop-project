@@ -20,6 +20,9 @@ def test_repr_str(test_example2):
 def test_number_of_sim(test_example2):
     test_example2.number_of_sim = 1
     assert test_example2.number_of_sim == 1
+    with pytest.raises(ValueError):
+        test_example2.number_of_sim = 0
+
 
 
 @pytest.fixture

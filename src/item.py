@@ -2,6 +2,11 @@ import csv
 from pathlib import Path
 
 
+class InstantiateCSVError(Exception):
+    """Отсутствует файл item.csv"""
+    pass
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -49,12 +54,16 @@ class Item:
             self.__name = name[:10]
 
     @classmethod
-    def instantiate_from_csv(cls):
-        path = Path('../src/items.csv').resolve()
-        with open(path, encoding='windows-1251') as csvfile:
-            reader = csv.DictReader(csvfile, delimiter=",")
-            for row in reader:
-                cls.all.append(cls(row['name'], row['price'], row['quantity']))
+    def instantiate_from_csv(cls, path='../src/items.csv'):
+        try:
+            with open(path, encoding='windows-1251') as csvfile:
+                reader = csv.DictReader(csvfile, delimiter=",")
+                for row in reader:
+                    if len(row) != 3:
+                        raise InstantiateCSVError("Файл item.csv поврежден")
+                    cls.all.append(cls(row['name'], row['price'], row['quantity']))
+        except FileNotFoundError:
+            raise FileNotFoundError("Отсутствует файл item.csv")
 
     @staticmethod
     def string_to_number(item):

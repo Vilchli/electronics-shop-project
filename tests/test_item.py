@@ -4,6 +4,8 @@ import pytest
 
 from src.item import Item
 
+from src.item import InstantiateCSVError
+
 from src.phone import Phone
 
 def test_class_item(test_example):
@@ -38,6 +40,16 @@ def test_name_setter(test_example):
     assert test_example.name == "Телефон"
     test_example.name = "Новый Телефон"
     assert test_example.name == "Новый Теле"
+
+
+def test_instantiate_from_csv():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv(path="")
+
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv(path='src/ppprrp.csv')
+
+
 
 
 
